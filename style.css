@@ -103,7 +103,8 @@ main > h2, #result {
 }
 
 .restart-container {
-    padding-top: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     display: flex;
     justify-content: center;
 }
