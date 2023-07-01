@@ -115,21 +115,19 @@ function addScores(textToDisplay) {
 
     playerScoreSpan.textContent = playerScore;
     compueterScoreSpan.textContent = computerScore;
+
+    if (playerScore === 5 || computerScore === 5) {
+        announceWinner();
+    }
 }
 
 function announceWinner() {
-    const container = document.querySelector(".container");
-    while (container.hasChildNodes()) {
-        container.removeChild(container.firstChild);
-    }
-    const finalResultHeader = document.createElement("h2");
+    const finalWinnerSpan = document.querySelector("#final-winner span");
     if (playerScore === 5) {
-        finalResultHeader.textContent = "You reached the score of 5 points first. You are the Winner!!!";
+        finalWinnerSpan.textContent = "Game Over! You win.";
     } else {
-        finalResultHeader.textContent = "Unfortunately for you the Computer reached the score of 5 points first. You lost!!!"
+        finalWinnerSpan.textContent = "Game Over! You lose.";
     }
-
-    container.appendChild(finalResultHeader);
 }
 
 function callPlayRound(e) {
@@ -155,10 +153,34 @@ function callPlayRound(e) {
     addScores(textToDisplay);
 }
 
-const buttons = Array.from(document.querySelectorAll(".button-selection"));
-buttons.forEach(button => {
+function restartGame() {
+    // reset final winner
+    const finalWinnerSpan = document.querySelector("#final-winner span");
+    finalWinnerSpan.textContent = "No winner yet.";
+
+    // reset scores
+    const playerScoreSpan = document.querySelector("#player-score");
+    const compueterScoreSpan = document.querySelector("#computer-score");
+    playerScoreSpan.textContent = 0;
+    compueterScoreSpan.textContent = 0;
+    playerScore = 0;
+    computerScore = 0;
+
+    // reset results
+    const results = document.querySelector(".results");
+    const resultsParaChildren = document.querySelectorAll(".results p");
+    for (let i = 0; i < resultsParaChildren.length; i++) {
+        results.removeChild(resultsParaChildren[i]);
+    }
+}
+
+const gameButtons = Array.from(document.querySelectorAll(".button-selection"));
+gameButtons.forEach(button => {
     button.addEventListener("click", callPlayRound)
 });
+
+const restartButton = document.querySelector("#restart");
+restartButton.addEventListener("click", restartGame);
 
 /*
 function game() {
@@ -190,5 +212,22 @@ function game() {
         // playerScore === computerScore
         console.log("From the result of the 5 games, it is a Draw!");
     }
+}
+*/
+
+/* 
+function announceWinner() {
+    const container = document.querySelector(".container");
+    while (container.hasChildNodes()) {
+        container.removeChild(container.firstChild);
+    }
+    const finalResultHeader = document.createElement("h2");
+    if (playerScore === 5) {
+        finalResultHeader.textContent = "You reached the score of 5 points first. You are the Winner!!!";
+    } else {
+        finalResultHeader.textContent = "Unfortunately for you the Computer reached the score of 5 points first. You lost!!!"
+    }
+
+    container.appendChild(finalResultHeader);
 }
 */
