@@ -54,6 +54,7 @@ main > h2, #result {
     display: flex;
     gap: 128px;
     justify-content: center;
+    margin-bottom: 18px;
 }
 
 .visual-selection h2{
@@ -66,7 +67,63 @@ main > h2, #result {
     border-radius: 10%;
 }
 
+.user-choices {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
 
+.user-choices button {
+    background-color: rgb(13, 13, 50);
+    cursor: pointer;
+    border: 6px solid rgb(2, 2, 36);
+    border-radius: 10%;
+}
+
+.user-choices button:hover {
+    background-color: yellow;
+}
+
+.user-choices h2 {
+    font-family: 'DotGothic16', sans-serif;
+}
+
+.user-choices button h2 {
+    color: yellow;
+}
+
+.user-choices button:hover h2 {
+    color: rgb(2, 2, 36);
+}
+
+.user-choices button img {
+    height: auto;
+    min-width: 64px;
+    max-width: 128px;
+}
+
+.restart-container {
+    padding-top: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+#restart {
+    font-family: 'DotGothic16', sans-serif;
+    cursor: pointer;
+    background-color: rgb(13, 13, 50);
+    color: yellow;
+    font-size: 20px;
+    padding: 8px 16px;
+    border: 5px solid rgb(2, 2, 36);
+    border-radius: 10%;
+}
+
+#restart:hover {
+    transform: scale(1.1);
+    border-color: yellow;
+    box-shadow: 0 0 1rem #ffc600;
+}
 
 /* Footer */
 footer {

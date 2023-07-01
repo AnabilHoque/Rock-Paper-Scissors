@@ -99,6 +99,13 @@ function updateScoreFromText(text) {
     }
 }
 
+function updateScreenImages(you, computer) {
+    const youImage = document.querySelector(".visual-selection .visual-you img");
+    youImage.setAttribute("src", `./images/${you}.png`);
+    const computerImage = document.querySelector(".visual-selection .visual-computer img");
+    computerImage.setAttribute("src", `./images/${computer}.png`);
+}
+
 function addResult(textToDisplay) {
     const resultSpan = document.querySelector("#result span");
     resultSpan.textContent = textToDisplay;
@@ -120,9 +127,9 @@ function addScores(textToDisplay) {
 
 function announceWinner() {
     if (playerScore === 5) {
-        addResult("Game Over! You Win.");
+        addResult("Game Finished! You Win.");
     } else {
-        addResult("Game Over! You Lose.");
+        addResult("Game Finished! You Lose.");
     }
 }
 
@@ -132,14 +139,17 @@ function callPlayRound(e) {
     }
 
     // get event e information
-    const htmlTag = e.target;
-    const htmlTagID = htmlTag.getAttribute("id");
+    const buttonTag = e.target.closest("button");
+    const buttonTagID = buttonTag.getAttribute("id");
 
     // get random computer choice
     const computerSelection = getComputerChoice();
 
+    // update screen images for 'you' and 'computer'
+    updateScreenImages(buttonTagID, computerSelection);
+
     // play a single round and get textual result
-    const textToDisplay = playRound(htmlTagID, computerSelection);
+    const textToDisplay = playRound(buttonTagID, computerSelection);
 
     // dynamically update result
     addResult(textToDisplay);
@@ -164,7 +174,7 @@ function restartGame() {
 
 const gameButtons = Array.from(document.querySelectorAll(".button-selection"));
 gameButtons.forEach(button => {
-    button.addEventListener("click", callPlayRound)
+    button.addEventListener("click", callPlayRound);
 });
 
 const restartButton = document.querySelector("#restart");
