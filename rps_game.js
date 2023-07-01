@@ -68,7 +68,7 @@ function getText(playerSelectionCaseInsensitive, computerSelection, result) {
     if (result === 0) {
         return `You Lose! ${capitaliseWord(computerSelection)} beats ${capitaliseWord(playerSelectionCaseInsensitive)}`;   
     } else if (result === 1) {
-        return `It's a Draw!`;
+        return `It's a Tie!`;
     } else {
         // result === 2
         return `You Win! ${capitaliseWord(playerSelectionCaseInsensitive)} beats ${capitaliseWord(computerSelection)}`;
@@ -99,12 +99,9 @@ function updateScoreFromText(text) {
     }
 }
 
-function addResults(textToDisplay) {
-    // dynamically add new paragraphs showing the textual results
-    const container = document.querySelector(".results");
-    const resultPara = document.createElement("p");
-    resultPara.textContent = textToDisplay;
-    container.appendChild(resultPara);
+function addResult(textToDisplay) {
+    const resultSpan = document.querySelector("#result span");
+    resultSpan.textContent = textToDisplay;
 }
 
 function addScores(textToDisplay) {
@@ -122,17 +119,15 @@ function addScores(textToDisplay) {
 }
 
 function announceWinner() {
-    const finalWinnerSpan = document.querySelector("#final-winner span");
     if (playerScore === 5) {
-        finalWinnerSpan.textContent = "Game Over! You win.";
+        addResult("Game Over! You Win.");
     } else {
-        finalWinnerSpan.textContent = "Game Over! You lose.";
+        addResult("Game Over! You Lose.");
     }
 }
 
 function callPlayRound(e) {
     if (playerScore === 5 || computerScore === 5) {
-        announceWinner();
         return;
     }
 
@@ -146,11 +141,43 @@ function callPlayRound(e) {
     // play a single round and get textual result
     const textToDisplay = playRound(htmlTagID, computerSelection);
 
-    // dynamically add new paragraphs showing the textual results
-    addResults(textToDisplay);
+    // dynamically update result
+    addResult(textToDisplay);
 
-    // dynamically add the scores showing the numerical results
+    // dynamically update the scores showing the numerical results
     addScores(textToDisplay);
+}
+
+function restartGame() {
+    // reset result
+    const resultSpan = document.querySelector("#result span");
+    resultSpan.textContent = "";
+
+    // reset scores
+    const playerScoreSpan = document.querySelector("#player-score");
+    const compueterScoreSpan = document.querySelector("#computer-score");
+    playerScoreSpan.textContent = 0;
+    compueterScoreSpan.textContent = 0;
+    playerScore = 0;
+    computerScore = 0;
+}
+
+const gameButtons = Array.from(document.querySelectorAll(".button-selection"));
+gameButtons.forEach(button => {
+    button.addEventListener("click", callPlayRound)
+});
+
+const restartButton = document.querySelector("#restart");
+restartButton.addEventListener("click", restartGame);
+
+/* 
+Code that would display all the results rather than displaying a single result
+function addResults(textToDisplay) {
+    // dynamically add new paragraphs showing the textual results
+    const container = document.querySelector(".results");
+    const resultPara = document.createElement("p");
+    resultPara.textContent = textToDisplay;
+    container.appendChild(resultPara);
 }
 
 function restartGame() {
@@ -173,11 +200,4 @@ function restartGame() {
         results.removeChild(resultsParaChildren[i]);
     }
 }
-
-const gameButtons = Array.from(document.querySelectorAll(".button-selection"));
-gameButtons.forEach(button => {
-    button.addEventListener("click", callPlayRound)
-});
-
-const restartButton = document.querySelector("#restart");
-restartButton.addEventListener("click", restartGame);
+*/

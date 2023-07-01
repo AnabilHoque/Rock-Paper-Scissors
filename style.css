@@ -1,0 +1,81 @@
+/* General Properties */
+
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    font-family: 'DotGothic16', sans-serif;
+    color: yellow;
+    background-color: rgb(13, 13, 50);
+    min-height: 100vh;
+}
+
+/* Header */
+
+header {
+    background-color: rgb(2, 2, 36);
+}
+
+header h1 {
+    color: yellow;
+    text-align: center;
+    padding: 38px 0px;
+    margin: 0px;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+/* Main */
+
+main {
+    flex: 1;
+}
+
+main > h2, #result {
+    text-align: center;
+}
+
+.scores {
+    text-align: center;
+}
+
+.visual-selection img {
+    height: auto;
+    min-width: 64px;
+    max-width: 128px;
+}
+
+.visual-selection {
+    display: flex;
+    gap: 128px;
+    justify-content: center;
+}
+
+.visual-selection h2{
+    text-align: center;
+}
+
+.visual-you, .visual-computer {
+    padding: 8px 32px;
+    border: 8px solid rgb(2, 2, 36);
+    border-radius: 10%;
+}
+
+
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(2, 2, 36);
+}
+
+footer p {
+    font-size: 20px;
+    color: yellow;
+}

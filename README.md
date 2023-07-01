@@ -4,3 +4,4 @@ Resources:
 * [Rock icon created by Dreamcreateicons - Flaticon](https://www.flaticon.com/free-icons/rocks)
 * [Paper icon created by Freepik - Flaticon](https://www.flaticon.com/free-icons/paper)
 * [Scissors icons created by Gulraiz - Flaticon](https://www.flaticon.com/free-icons/scissors)
+* [Unknown icon created by Freepik - Flaticon](https://www.flaticon.com/free-icons/unknown)
