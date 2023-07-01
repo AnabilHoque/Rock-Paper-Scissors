@@ -1,5 +1,7 @@
 const SHAPES = ["rock", "paper", "scissors"];
 const NUM_SHAPES = SHAPES.length;
+let playerScore = 0;
+let computerScore = 0;
 
 function capitaliseWord(word) {
     let firstLetter = word.charAt(0);
@@ -10,7 +12,7 @@ function capitaliseWord(word) {
 
 function getComputerChoice() {
     // Math.floor(Math.random() * (max - min) + min); returns integer between max (exclusive) and min (inclusive)
-    let randomIdx = Math.floor(Math.random() * (NUM_SHAPES + 1));
+    let randomIdx = Math.floor(Math.random() * NUM_SHAPES);
     return SHAPES[randomIdx];
 }
 
@@ -88,6 +90,77 @@ function playRound(playerSelection, computerSelection) {
     return getText(playerSelectionCaseInsensitive, computerSelection, result);
 }
 
+function updateScoreFromText(text) {
+    let scoreResult = text.split(" ")[1]; // access Lose!, Win! or something else <=> Draw
+    if (scoreResult === "Lose!") {
+        computerScore++;
+    } else if (scoreResult === "Win!") {
+        playerScore++;
+    }
+}
+
+function addResults(textToDisplay) {
+    // dynamically add new paragraphs showing the textual results
+    const container = document.querySelector(".results");
+    const resultPara = document.createElement("p");
+    resultPara.textContent = textToDisplay;
+    container.appendChild(resultPara);
+}
+
+function addScores(textToDisplay) {
+    // dynamically add the scores showing the numerical results
+    updateScoreFromText(textToDisplay);
+    const playerScoreSpan = document.querySelector("#player-score");
+    const compueterScoreSpan = document.querySelector("#computer-score");
+
+    playerScoreSpan.textContent = playerScore;
+    compueterScoreSpan.textContent = computerScore;
+}
+
+function announceWinner() {
+    const container = document.querySelector(".container");
+    while (container.hasChildNodes()) {
+        container.removeChild(container.firstChild);
+    }
+    const finalResultHeader = document.createElement("h2");
+    if (playerScore === 5) {
+        finalResultHeader.textContent = "You reached the score of 5 points first. You are the Winner!!!";
+    } else {
+        finalResultHeader.textContent = "Unfortunately for you the Computer reached the score of 5 points first. You lost!!!"
+    }
+
+    container.appendChild(finalResultHeader);
+}
+
+function callPlayRound(e) {
+    if (playerScore === 5 || computerScore === 5) {
+        announceWinner();
+        return;
+    }
+
+    // get event e information
+    const htmlTag = e.target;
+    const htmlTagID = htmlTag.getAttribute("id");
+
+    // get random computer choice
+    const computerSelection = getComputerChoice();
+
+    // play a single round and get textual result
+    const textToDisplay = playRound(htmlTagID, computerSelection);
+
+    // dynamically add new paragraphs showing the textual results
+    addResults(textToDisplay);
+
+    // dynamically add the scores showing the numerical results
+    addScores(textToDisplay);
+}
+
+const buttons = Array.from(document.querySelectorAll(".button-selection"));
+buttons.forEach(button => {
+    button.addEventListener("click", callPlayRound)
+});
+
+/*
 function game() {
     let playerScore = 0;
     let computerScore = 0;
@@ -118,3 +191,4 @@ function game() {
         console.log("From the result of the 5 games, it is a Draw!");
     }
 }
+*/
