@@ -46,13 +46,12 @@ main > h2, #result {
 
 .visual-selection img {
     height: auto;
-    min-width: 64px;
     max-width: 128px;
 }
 
 .visual-selection {
     display: flex;
-    gap: 128px;
+    gap: 64px;
     justify-content: center;
     margin-bottom: 18px;
 }
@@ -98,7 +97,6 @@ main > h2, #result {
 
 .user-choices button img {
     height: auto;
-    min-width: 64px;
     max-width: 128px;
 }
 
@@ -136,4 +134,15 @@ footer {
 footer p {
     font-size: 20px;
     color: yellow;
+}
+
+@media only screen and (max-width: 500px) {
+    .visual-selection img {
+        height: auto;
+        max-width: 84px;
+    }
+    .user-choices button img {
+        height: auto;
+        max-width: 84px;
+    }   
 }
