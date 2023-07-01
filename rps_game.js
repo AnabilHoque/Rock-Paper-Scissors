@@ -170,6 +170,10 @@ function restartGame() {
     compueterScoreSpan.textContent = 0;
     playerScore = 0;
     computerScore = 0;
+
+    // reset screen images
+    updateScreenImages("unknown", "unknown");
+
 }
 
 const gameButtons = Array.from(document.querySelectorAll(".button-selection"));
