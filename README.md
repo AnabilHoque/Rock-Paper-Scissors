@@ -1,5 +1,5 @@
 # Rock Paper Scissors
-Rock Paper Scissors page for the [Odin Project](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors).<br>
+Rock Paper Scissors page for the [Odin Project](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors). Have a look at the [Rock Paper Scissors](https://anabilhoque.github.io/Rock-Paper-Scissors/) page.<br>
 Resources:
 * [Rock icon created by Dreamcreateicons - Flaticon](https://www.flaticon.com/free-icons/rocks)
 * [Paper icon created by Freepik - Flaticon](https://www.flaticon.com/free-icons/paper)
