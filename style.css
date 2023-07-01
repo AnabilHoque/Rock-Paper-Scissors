@@ -139,10 +139,10 @@ footer p {
 @media only screen and (max-width: 500px) {
     .visual-selection img {
         height: auto;
-        max-width: 84px;
+        max-width: 72px;
     }
     .user-choices button img {
         height: auto;
-        max-width: 84px;
+        max-width: 72px;
     }   
 }
