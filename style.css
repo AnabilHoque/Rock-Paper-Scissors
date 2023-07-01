@@ -44,16 +44,16 @@ main > h2, #result {
     text-align: center;
 }
 
+.visual-selection {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
 .visual-selection img {
     height: auto;
     max-width: 128px;
-}
-
-.visual-selection {
-    display: flex;
-    gap: 64px;
-    justify-content: center;
-    margin-bottom: 18px;
 }
 
 .visual-selection h2{
