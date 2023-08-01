@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -13,7 +17,7 @@ body {
     font-family: 'DotGothic16', sans-serif;
     color: yellow;
     background-color: rgb(13, 13, 50);
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 /* Header */
@@ -38,10 +42,15 @@ main {
 
 main > h2, #result {
     text-align: center;
+    margin: 12px 0px;
 }
 
 .scores {
     text-align: center;
+}
+
+.scores > * {
+    margin: 12px 0px;
 }
 
 .visual-selection {
@@ -101,8 +110,8 @@ main > h2, #result {
 }
 
 .restart-container {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     display: flex;
     justify-content: center;
 }
